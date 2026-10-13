@@ -8,8 +8,10 @@ _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)
 from missions._common import load_csv, num
 from finops import pricing
 
-# $/1M tokens (input, output) — illustrative 2026.
-MODEL_PRICES = {"small": (0.20, 0.40), "large": (3.00, 15.00)}
+# $/1M tokens (input, output) — Anthropic list prices (prompts <=100K tokens).
+# small = Claude Haiku 5.5 ($0.10/$0.50); large = Claude Opus 5.5 ($4/$20).
+# Cache read = 0.1x input, cache write = 1.25x input, Batch = -50% (same as pricing.py defaults).
+MODEL_PRICES = {"small": (0.10, 0.50), "large": (4.00, 20.00)}
 
 
 def run(verbose: bool = True) -> dict:
